@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM bilan ishlash bo'yicha qo'llanma</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            position: relative;
+            overflow: auto;
+            margin-top: 10px;
+        }
+        code {
+            font-family: monospace;
+            white-space: pre-wrap; /* Kodingiz qator bo'ylab joylashishini ta'minlash uchun */
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM bilan ishlash bo'yicha qo'llanma</h1>
+    
+    <h2>DOM nima?</h2>
+    <p>DOM hujjat obyekt modeli bo‘lib, HTML yoki XML hujjatni obyektlar daraxti sifatida tasvirlaydi. HTML hujjatidagi har bir element JavaScript orqali foydalanish va o‘zgartirish mumkin bo‘lgan ob'ektga aylanadi.</p>
+    
+    <h2>DOM elementlariga kirish</h2>
+    
+    <h3>1. <code>document.getElementById(id)</code></h3>
+    <p>Berilgan <code>id</code> ga ega elementni qaytaradi.</p>
+    <pre id="codeBlock1">
+        <code>
+let element = document.getElementById('myId');
+console.log(element);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock1')">Copy</button>
+    </pre>
+    
+    <h3>2. <code>document.getElementsByClassName(className)</code></h3>
+    <p>Berilgan sinf nomiga ega elementlar to‘plamini qaytaradi.</p>
+    <pre id="codeBlock2">
+        <code>
+let elements = document.getElementsByClassName('myClass');
+console.log(elements);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock2')">Copy</button>
+    </pre>
+    
+    <h3>3. <code>document.getElementsByTagName(tagName)</code></h3>
+    <p>Berilgan teg nomiga ega elementlar to‘plamini qaytaradi.</p>
+    <pre id="codeBlock3">
+        <code>
+let elements = document.getElementsByTagName('div');
+console.log(elements);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock3')">Copy</button>
+    </pre>
+    
+    <h3>4. <code>document.querySelector(selector)</code></h3>
+    <p>CSS selektoriga mos keladigan birinchi elementni qaytaradi.</p>
+    <pre id="codeBlock4">
+        <code>
+let element = document.querySelector('.myClass');
+console.log(element);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock4')">Copy</button>
+    </pre>
+    
+    <h3>5. <code>document.querySelectorAll(selector)</code></h3>
+    <p>CSS selektoriga mos keladigan barcha elementlarni qaytaradi.</p>
+    <pre id="codeBlock5">
+        <code>
+let elements = document.querySelectorAll('.myClass');
+console.log(elements);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock5')">Copy</button>
+    </pre>
+
+    <h2>Elementlarning mazmuni va atributlarini o‘zgartirish</h2>
+    
+    <h3>1. <code>element.innerHTML</code></h3>
+    <p>Elementning HTML mazmunini oladi yoki o‘rnatadi.</p>
+    <pre id="codeBlock6">
+        <code>
+let element = document.getElementById('myId');
+element.innerHTML = '&lt;p&gt;Yangi mazmun&lt;/p&gt;';
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock6')">Copy</button>
+    </pre>
+    
+    <h3>2. <code>element.textContent</code></h3>
+    <p>Elementning matn mazmunini oladi yoki o‘rnatadi.</p>
+    <pre id="codeBlock7">
+        <code>
+let element = document.getElementById('myId');
+element.textContent = 'Yangi matn mazmuni';
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock7')">Copy</button>
+    </pre>
+    
+    <h3>3. <code>element.setAttribute(name, value)</code></h3>
+    <p>Elementning atribut qiymatini o‘rnatadi.</p>
+    <pre id="codeBlock8">
+        <code>
+let element = document.getElementById('myId');
+element.setAttribute('class', 'newClass');
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock8')">Copy</button>
+    </pre>
+    
+    <h3>4. <code>element.getAttribute(name)</code></h3>
+    <p>Elementning atribut qiymatini oladi.</p>
+    <pre id="codeBlock9">
+        <code>
+let value = document.getElementById('myId').getAttribute('class');
+console.log(value);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock9')">Copy</button>
+    </pre>
+    
+    <h3>5. <code>element.removeAttribute(name)</code></h3>
+    <p>Elementning atributini o‘chiradi.</p>
+    <pre id="codeBlock10">
+        <code>
+let element = document.getElementById('myId');
+element.removeAttribute('class');
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock10')">Copy</button>
+    </pre>
+    
+    <h2>Elementlarning uslubini o‘zgartirish</h2>
+    
+    <h3><code>element.style.property</code></h3>
+    <p>Elementning CSS xususiyatlarini o‘zgartiradi.</p>
+    <pre id="codeBlock11">
+        <code>
+let element = document.getElementById('myId');
+element.style.color = 'red';
+element.style.backgroundColor = 'blue';
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock11')">Copy</button>
+    </pre>
+    
+    <h2>Klasslar bilan ishlash</h2>
+    
+    <h3>1. <code>element.classList.add(className)</code></h3>
+    <p>Elementga klass qo‘shadi.</p>
+    <pre id="codeBlock12">
+        <code>
+let element = document.getElementById('myId');
+element.classList.add('newClass');
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock12')">Copy</button>
+    </pre>
+    
+    <h3>2. <code>element.classList.remove(className)</code></h3>
+    <p>Elementdan klassni olib tashlaydi.</p>
+    <pre id="codeBlock13">
+        <code>
+let element = document.getElementById('myId');
+element.classList.remove('oldClass');
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock13')">Copy</button>
+    </pre>
+    
+    <h3>3. <code>element.classList.toggle(className)</code></h3>
+    <p>Elementning klassini yoqadi yoki o‘chiradi.</p>
+    <pre id="codeBlock14">
+        <code>
+let element = document.getElementById('myId');
+element.classList.toggle('toggleClass');
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock14')">Copy</button>
+    </pre>
+    
+    <h3>4. <code>element.classList.contains(className)</code></h3>
+    <p>Elementda berilgan klass borligini tekshiradi.</p>
+    <pre id="codeBlock15">
+        <code>
+let element = document.getElementById('myId');
+let hasClass = element.classList.contains('myClass');
+console.log(hasClass);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock15')">Copy</button>
+    </pre>
+
+    <h2>DOMga element qo‘shish va olib tashlash</h2>
+    
+    <h3>1. <code>document.createElement(tagName)</code></h3>
+    <p>Yangi element yaratadi.</p>
+    <pre id="codeBlock16">
+        <code>
+let newElement = document.createElement('div');
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock16')">Copy</button>
+    </pre>
+    
+    <h3>2. <code>parentNode.appendChild(newChild)</code></h3>
+    <p>Yangi elementni ota elementga qo‘shadi.</p>
+    <pre id="codeBlock17">
+        <code>
+let parent = document.getElementById('parentId');
+let newElement = document.createElement('div');
+parent.appendChild(newElement);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock17')">Copy</button>
+    </pre>
+    
+    <h3>3. <code>parentNode.removeChild(child)</code></h3>
+    <p>Elementni ota elementdan olib tashlaydi.</p>
+    <pre id="codeBlock18">
+        <code>
+let parent = document.getElementById('parentId');
+let child = document.getElementById('childId');
+parent.removeChild(child);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock18')">Copy</button>
+    </pre>
+    
+    <h3>4. <code>parentNode.replaceChild(newChild, oldChild)</code></h3>
+    <p>Elementni boshqa element bilan almashtiradi.</p>
+    <pre id="codeBlock19">
+        <code>
+let parent = document.getElementById('parentId');
+let newChild = document.createElement('div');
+let oldChild = document.getElementById('childId');
+parent.replaceChild(newChild, oldChild);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock19')">Copy</button>
+    </pre>
+    
+    <h3>5. <code>element.cloneNode(deep)</code></h3>
+    <p>Elementni klonlaydi (deep true bo'lsa, barcha bola elementlar ham klonlanadi).</p>
+    <pre id="codeBlock20">
+        <code>
+let element = document.getElementById('myId');
+let clone = element.cloneNode(true);
+console.log(clone);
+        </code>
+        <button class="copy-button" onclick="copyCode('codeBlock20')">Copy</button>
+    </pre>
+
+    <script>
+        function copyCode(id) {
+            // Kodni olish
+            const codeBlock = document.getElementById(id);
+            const code = codeBlock.querySelector('code').innerText;
+
+            // Vaqtinchalik textarea yaratish
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = code;
+            document.body.appendChild(tempTextArea);
+
+            // Textarea ichidagi matnni tanlash va nusxalash
+            tempTextArea.select();
+            document.execCommand('copy');
+
+            // Textarea-ni o'chirish
+            document.body.removeChild(tempTextArea);
+
+            // Foydalanuvchiga nusxalanganligini bildirish
+            alert('Kod nusxalandi!');
+        }
+    </script>
+</body>
+</html>
